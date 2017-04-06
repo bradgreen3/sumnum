@@ -23,7 +23,7 @@
 
 ### Known Issues
 
-* Ideally, the "quick add" feature would be triggered without having to click out of the input box. This will likely require some custom JavaScript where a ```setTimeout``` is used to delay the AJAX calls, otherwise ```keyUp``` would trigger the AJAX calls too quickly
+* It isn't ideal to have AJAX requests fire with each number that is typed. In future iterations, it'd be nice to write some JavaScript that utilizes ```setTimeout``` to delay the AJAX calls.
 
 ### Project Spec
 
