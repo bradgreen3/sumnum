@@ -32,7 +32,7 @@ class SumnumFormTest extends WebTestBase {
   /**
    * Tests that the form has a submit button to use.
    */
-  public function testExperimentFormSubmitButtonExists() {
+  public function testSumnumFormSubmitButtonExists() {
     $this->drupalGet('sumnum/form');
     $this->assertResponse(200);
     $this->assertFieldById('edit-submit');
@@ -41,7 +41,7 @@ class SumnumFormTest extends WebTestBase {
   /**
    * Test that correct options are present in form.
    */
-  public function testExperimentFormFieldOptionsExist() {
+  public function testSumnumFormFieldOptionsExist() {
     $this->drupalGet('sumnum/form');
     $this->assertResponse(200);
 
@@ -51,5 +51,38 @@ class SumnumFormTest extends WebTestBase {
 
     // check only two fields exist
     $this->assertNoFieldByName('third_number');
+  }
+
+  /**
+   * Test the submission of the form.
+   * @throws \Exception
+   */
+  public function testSumnumFormSubmitHappy() {
+    // submit the form with 2 + 5
+    $this->drupalPostForm(
+      'sumnum/form',
+      array(
+        'first_number' => '2',
+        'second_number' => '5'
+      ),
+      t('Add')
+    );
+    // should see the correct solution
+    $this->assertUrl('sumnum/form');
+    $this->assertText('The sum is 7');
+  }
+  public function testSumnumFormSubmitSad() {
+    // submit the form with two + 5
+    $this->drupalPostForm(
+      'sumnum/form',
+      array(
+        'first_number' => 'two',
+        'second_number' => '5'
+      ),
+      t('Add')
+    );
+    // should see error message
+    $this->assertUrl('sumnum/form');
+    $this->assertText('Input must be a valid number');
   }
 }
