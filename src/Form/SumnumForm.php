@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 class SumnumForm extends FormBase {
+
   /**
    * {@inheritdoc}
    */
@@ -48,5 +49,12 @@ class SumnumForm extends FormBase {
     if (is_numeric($form_state->getValue('second_number')) == FALSE) {
       $form_state->setErrorByName('second_number', $this->t('Input must be a valid number'));
     }
+  }
+
+  /**
+    * {@inheritdoc}
+    */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    drupal_set_message($this->t('The sum is @sum', array('@sum' => $form_state->getValue('first_number') + $form_state->getValue('second_number'))));
   }
 }
