@@ -1,0 +1,6 @@
+sumnum.form:
+  title: 'Sumnum'
+  description: 'Sumnum form'
+  parent: main
+  route_name: sumnum.form
+  menu_name: main

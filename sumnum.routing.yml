@@ -1,0 +1,7 @@
+sumnum.form:
+ path: '/sumnum/form'
+ defaults:
+   _title: 'Sumnum Form'
+   _form: '\Drupal\sumnum\Form\SumnumForm'
+ requirements:
+   _permission: 'access content'
