@@ -37,4 +37,16 @@ class SumnumForm extends FormBase {
     );
     return $form;
   }
+
+  /**
+    * {@inheritdoc}
+    */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    if (is_numeric($form_state->getValue('first_number')) == FALSE) {
+      $form_state->setErrorByName('first_number', $this->t('Input must be a valid number'));
+    }
+    if (is_numeric($form_state->getValue('second_number')) == FALSE) {
+      $form_state->setErrorByName('second_number', $this->t('Input must be a valid number'));
+    }
+  }
 }
