@@ -28,4 +28,13 @@ class SumnumFormTest extends WebTestBase {
     $this->drupalGet('sumnum/form');
     $this->assertResponse(200);
   }
+
+  /**
+   * Tests that the form has a submit button to use.
+   */
+  public function testExperimentFormSubmitButtonExists() {
+    $this->drupalGet('sumnum/form');
+    $this->assertResponse(200);
+    $this->assertFieldById('edit-submit');
+  }
 }
