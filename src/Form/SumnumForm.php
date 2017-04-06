@@ -31,7 +31,7 @@ class SumnumForm extends FormBase {
       '#title' => t('First Number:'),
       '#ajax' => [
         'callback' => array($this, 'sumNumbersCallback'),
-        'event' => 'change',
+        'event' => 'keyup',
         'progress' => array(
           'type' => 'throbber',
           'message' => NULL,
@@ -44,7 +44,7 @@ class SumnumForm extends FormBase {
       '#title' => t('Second Number:'),
       '#ajax' => [
         'callback' => array($this, 'sumNumbersCallback'),
-        'event' => 'change',
+        'event' => 'keyup',
         'progress' => array(
           'type' => 'throbber',
           'message' => NULL,
